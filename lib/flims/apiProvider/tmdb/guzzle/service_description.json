@@ -1,0 +1,44 @@
+{
+    "name": "TMDbAPI",
+    "baseUrl": "http://api.themoviedb.org/3/",
+    "operations": {
+        "auth": {
+            "responseClass": "StandardArray",
+            "parameters": {
+                "api_key": {"location": "query"}, 
+                "Accept": {"default": "application/json", "location": "header"}
+            }
+        },
+        "paginated": {
+            "extends": "auth",
+            "parameters": {
+                "page_limit": {
+                    "type": "integer",
+                    "location": "query"
+                },
+                "page": {
+                    "type": "integer",
+                    "location": "query"
+                }
+            }
+        },
+        "MoviesSearch": {
+            "extends": "paginated",
+            "httpMethod": "GET",
+            "uri": "search/movie",
+            "parameters": {
+                "query": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                }
+            }
+        }
+    },
+    "models": {
+        "StandardArray": {
+            "type": "array",
+            "location": "json"
+        }
+    }
+}

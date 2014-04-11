@@ -1,0 +1,58 @@
+{
+    "name": "AllocineAPI",
+    "baseUrl": "http://api.allocine.fr/rest/v3/",
+    "operations": {
+        "base": {
+            "responseClass": "StandardArray",
+            "parameters": {
+                "partner": {"location": "query"},
+                "format": {"location": "query", "default": "json"}
+            }
+        },
+        "Search": {
+            "extends": "base",
+            "httpMethod": "GET",
+            "uri": "search",
+            "parameters": {
+                "q": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                },
+                "count": {
+                    "type": "string",
+                    "location": "query",
+                    "default": "1"
+                },
+                "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "default": "movie"
+                }
+            }
+        },
+        "Detail": {
+            "extends": "base",
+            "httpMethod": "GET",
+            "uri": "movie",
+            "parameters": {
+                "code": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                },
+                "profile": {
+                    "type": "string",
+                    "location": "query",
+                    "default": "large"
+                }
+            }
+        }
+    },
+    "models": {
+        "StandardArray": {
+            "type": "array",
+            "location": "json"
+        }
+    }
+}

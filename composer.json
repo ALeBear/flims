@@ -1,0 +1,15 @@
+{
+    "name": "BothOfUs/flims",
+    "description": "Description of project flims.",
+    "authors": [
+        {
+            "name": "ant-1",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "guzzle/guzzle": "3.*",
+        "doctrine/orm": "*",
+        "symfony/yaml": "*"
+    }
+}

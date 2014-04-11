@@ -1,0 +1,28 @@
+{
+    "name": "FreebaseAPI",
+    "baseUrl": "https://www.googleapis.com/freebase/v1/",
+    "operations": {
+        "auth": {
+            "responseClass": "StandardArray",
+            "parameters": {"apikey": {"location": "query"}}
+        },
+        "MQLRead": {
+            "extends": "auth",
+            "httpMethod": "GET",
+            "uri": "mqlread",
+            "parameters": {
+                "query": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                }
+            }
+        }
+    },
+    "models": {
+        "StandardArray": {
+            "type": "array",
+            "location": "json"
+        }
+    }
+}

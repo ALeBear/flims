@@ -1,0 +1,52 @@
+{
+    "name": "NetflixAPI",
+    "baseUrl": "http://api-public.netflix.com/",
+    "operations": {
+        "NoAuth": {"parameters": {"oauth_consumer_key": {"location": "query"}}},
+        "SearchTitles": {
+            "httpMethod": "GET",
+            "uri": "catalog/titles",
+            "parameters": {
+                "term": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                },
+                "start_index": {
+                    "type": "integer",
+                    "location": "query"
+                },
+                "country": {
+                    "type": "string",
+                    "location": "query"
+                },
+                "max_results": {
+                    "type": "integer",
+                    "location": "query"
+                }
+            }
+        },
+        "MovieDetails": {
+            "httpMethod": "GET",
+            "uri": "catalog/titles/movies/{id}",
+            "parameters": {
+                "id": {
+                    "type": "string",
+                    "location": "uri",
+                    "required": "true"
+                }
+            }
+        },
+        "MovieSynopsis": {
+            "httpMethod": "GET",
+            "uri": "catalog/titles/movies/{id}/synopsis",
+            "parameters": {
+                "id": {
+                    "type": "string",
+                    "location": "uri",
+                    "required": "true"
+                }
+            }
+        }
+    }
+}

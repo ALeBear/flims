@@ -1,0 +1,44 @@
+{
+    "name": "RottenTomatoesAPI",
+    "baseUrl": "http://api.rottentomatoes.com/api/public/v1.0/",
+    "operations": {
+        "auth": {
+            "responseClass": "StandardArray",
+            "parameters": {
+                "apikey": {"location": "query"},
+                "command.expects": {"default": "application/json"}
+            }
+        },
+        "paginated": {
+            "extends": "auth",
+            "parameters": {
+                "page_limit": {
+                    "type": "integer",
+                    "location": "query"
+                },
+                "page": {
+                    "type": "integer",
+                    "location": "query"
+                }
+            }
+        },
+        "MoviesSearch": {
+            "extends": "paginated",
+            "httpMethod": "GET",
+            "uri": "movies.json",
+            "parameters": {
+                "q": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                }
+            }
+        }
+    },
+    "models": {
+        "StandardArray": {
+            "type": "array",
+            "location": "json"
+        }
+    }
+}

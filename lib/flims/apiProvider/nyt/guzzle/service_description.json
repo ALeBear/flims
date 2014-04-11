@@ -1,0 +1,37 @@
+{
+    "name": "NYTCriticsAPI",
+    "baseUrl": "http://api.nytimes.com/svc/movies/v2/",
+    "operations": {
+        "auth": {
+            "responseClass": "StandardArray",
+            "parameters": {"api-key": {"location": "query"}}
+        },
+        "paginated": {
+            "extends": "auth",
+            "parameters": {
+                "offset": {
+                    "type": "integer",
+                    "location": "query"
+                }
+            }
+        },
+        "ReviewsSearch": {
+            "extends": "paginated",
+            "httpMethod": "GET",
+            "uri": "reviews/search.json",
+            "parameters": {
+                "query": {
+                    "type": "string",
+                    "location": "query",
+                    "required": "true"
+                }
+            }
+        }
+    },
+    "models": {
+        "StandardArray": {
+            "type": "array",
+            "location": "json"
+        }
+    }
+}
